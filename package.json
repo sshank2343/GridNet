@@ -1,0 +1,23 @@
+{
+  "name": "gridnet",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hand-built load balancer, distributed cache, and cluster coordination layer",
+  "workspaces": [
+    "shared",
+    "worker-node",
+    "load-balancer",
+    "distributed-cache",
+    "distributed-lock",
+    "network-labs"
+  ],
+  "scripts": {
+    "dev:worker1": "cross-env NODE_ID=node-1 NODE_PORT=6001 npm run dev --workspace=worker-node",
+    "dev:worker2": "cross-env NODE_ID=node-2 NODE_PORT=6002 npm run dev --workspace=worker-node",
+    "dev:worker3": "cross-env NODE_ID=node-3 NODE_PORT=6003 npm run dev --workspace=worker-node",
+    "dev:lb": "npm run dev --workspace=load-balancer"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
+  }
+}
